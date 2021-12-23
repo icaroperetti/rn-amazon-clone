@@ -3,7 +3,20 @@ import {View, Text, Image} from 'react-native';
 import styles from './styles';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const ProductItem = () => {
+interface ProductItemProps {
+  item: {
+    id: string;
+    title: string;
+    image: string;
+    avgRating: number;
+    ratings: number;
+    price: number;
+    oldPrice?: number;
+  };
+}
+
+const ProductItem = (props: ProductItemProps) => {
+  const {item} = props;
   return (
     <View style={styles.page}>
       {/* Render product component */}
@@ -11,48 +24,34 @@ const ProductItem = () => {
         <Image
           style={styles.image}
           source={{
-            uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/cleancode.jpg',
+            uri: item.image,
           }}
         />
         <View style={styles.rightContainer}>
           <Text style={styles.title} numberOfLines={2}>
-            Clean Code: A Handbook of Agile Software Craftsmanship
+            {item.title}
           </Text>
           <View style={styles.ratingsContainer}>
-            <FontAwesome
-              style={styles.star}
-              name="star"
-              size={18}
-              color={'#e47911'}
-            />
-            <FontAwesome
-              style={styles.star}
-              name="star"
-              size={18}
-              color={'#e47911'}
-            />
-            <FontAwesome
-              style={styles.star}
-              name="star"
-              size={18}
-              color={'#e47911'}
-            />
-            <FontAwesome
-              style={styles.star}
-              name="star-half-full"
-              size={18}
-              color={'#e47911'}
-            />
+            {[0, 0, 0, 0].map((element, index) => (
+              <FontAwesome
+                style={styles.star}
+                name={index < Math.floor(item.avgRating) ? 'star' : 'star-o'}
+                size={18}
+                color={'#e47911'}
+              />
+            ))}
             <FontAwesome
               style={styles.star}
               name="star-o"
               size={18}
               color={'#e47911'}
             />
-            <Text>13.000</Text>
+            <Text>{item.ratings}</Text>
           </View>
-          <Text style={styles.price}>Price $13.57</Text>
-          <Text style={styles.oldPrice}>$16.22</Text>
+          <Text style={styles.price}>Price: {item.price}</Text>
+          {item.oldPrice && (
+            <Text style={styles.oldPrice}>{item.oldPrice}</Text>
+          )}
         </View>
       </View>
     </View>
