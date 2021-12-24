@@ -1,11 +1,13 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
+    padding: 10,
     backgroundColor: '#fff',
   },
-  title: {
-    fontSize: 18,
+  title: {},
+  description: {
+    marginVertical: 10,
   },
   price: {
     fontSize: 18,
@@ -14,9 +16,6 @@ const styles = StyleSheet.create({
   oldPrice: {
     fontSize: 12,
     textDecorationLine: 'line-through',
-  },
-  description: {
-    fontWeight: 'bold',
   },
 });
 

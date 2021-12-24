@@ -23,8 +23,10 @@ const ProductScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.root}>
       <Text style={styles.title}>{product.title}</Text>
+
+      {/* TODO - Create Carousel */}
 
       {/* Image Carousel */}
 
