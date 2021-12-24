@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#d1d1d1',
     borderRadius: 5,
+    padding: 5,
     backgroundColor: '#fff',
   },
   image: {
